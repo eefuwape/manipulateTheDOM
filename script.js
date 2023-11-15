@@ -21,32 +21,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Remember there are a couple of ways to query id. Change the text of the title to something shorter.
 
   let changeTitle = document.querySelector("#main-title")
-  changeTitle.textContent = "Hello, I'm Dom. Wanna Race?"
+  changeTitle.textContent = "A Page about DOM"
 
   // Part 2
   // Select the body and change the background-color to a new color of your choice.
 
-    let bodyPaint = document.querySelector("body")
-    bodyPaint.style.setAttribute("backgroundColor", "red")
+  let bodyPaint = document.querySelector("body")
+  bodyPaint.style.backgroundColor = "red"
 
   // Part 3
   // Select DOM's Favorite Things list and remove the last list item.
 
-  let changeList = document.querySelector("li:last-child")
-  changeList.parentElement.removeChild(changeList)  
+  const changeList = document.querySelectorAll("#favorite-things li")
+  changeList[5].remove()
 
   // Part 4
   // Select all .special-title class elements and change their font-size to 2rem. 
   // Remember you might have to iterate through the list of elements
 
-  document.querySelectorAll(".special-title").forEach((title) => {
-    title.style.setAttribute("fontSize", "2rem")
+  const quotesList = document.querySelectorAll(".special-title")
+  quotesList.forEach((quote) => {
+    quote.style.fontSize = "2rem"
   })
 
   // Part 5
   // Turns out DOM never raced in Chicago. Access the Past Races list and remove Chicago.
 
-  let changeAnotherList = document.querySelector("past-races")
+  const changeAnotherList = document.getElementById("past-races")
   changeAnotherList.replaceChildren
 
   // Part 6
