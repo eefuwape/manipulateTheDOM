@@ -47,14 +47,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Part 5
   // Turns out DOM never raced in Chicago. Access the Past Races list and remove Chicago.
 
-  const changeAnotherList = document.getElementById("past-races")
-  changeAnotherList.replaceChildren
+  const changeAnotherList = document.querySelectorAll("#past-races li")
+  changeAnotherList[3].remove()
 
   // Part 6
   // Let's add to DOM's Past Races list. Create a new <li> element, change 
   // the new <li> text to the name of a city, and append it to the Past Races list.
 
-  
+  const li = document.createElement("li")
+  li.textContent = "Cuba"
+  document.getElementById("past-races").appendChild(li)
 
   // Part 7
   /* Create a new .blog-post corresponding to the new city added in Part 6. You 
@@ -62,10 +64,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
   new <p> with some text. Think about what order you want to create the elements, and what 
   order you want to append them in. */
 
+  const divEl = document.createElement("div")
+  divEl.classList.add("blog-post", "purple")
+  const h1El = document.createElement("h1")
+  h1El.textContent = "Cuba"
+  const pEl = document.createElement("p")
+  pEl.textContent = "I WON A RACE DRIVING A BEAT UP BEETLE!"
+  document.querySelector(".main").appendChild(divEl)
+  divEl.appendChild(h1El)
+  divEl.appendChild(pEl)
+
   // Part 8
   // Query select the #quote-title ID element and add a click event handler. That event 
   // handler should use the function randomQuote whenever #quote-title is clicked.
   
+  const newQuote = document.querySelector("#quote-title")
+  newQuote.addEventListener("click", randomQuote)
+
   // Part 9
   // Select all .blog-post class elements. Iterate through the list of .blog-post class 
   // elements and apply two event handlers to each node. The first event handler should 
@@ -74,5 +89,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // The mouseout handler should toggle the class .purple
   // The mouseenter handler should toggle the class .red
 
-
+  const customizeScreen = document.getElementsByClassName("blog-post")
+  console.log(customizeScreen)
+  for (let i=0; i < customizeScreen.length; i++) {
+    customizeScreen[i].addEventListener("mouseout", function(evt1) {
+      customizeScreen[i].classList.toggle("purple")
+    })
+    customizeScreen[i].addEventListener("mouseenter", function(evt2) {
+      customizeScreen[i].classList.toggle("red")
+    })
+  }
 });
